@@ -13,6 +13,16 @@ document.querySelector("#current-1").textContent = 0;
 
 //document.querySelector('#score-1').innerHTML = '';
 
-document.querySelector(".dice").style.display = "none";
+var diceDom = document.querySelector(".dice");
+diceDom.style.display = "none";
 
-console.log("шоо : " + dice);
+//console.log("шоо : " + dice);
+
+document.querySelector(".btn-roll").addEventListener("click", shooShid);
+
+function shooShid() {
+  var diceNumber = Math.floor(Math.random() * 6) + 1;
+
+  diceDom.style.display = "block";
+  diceDom.src = "dice-" + diceNumber + ".png";
+}
