@@ -1,4 +1,4 @@
-var activePlayer = 1;
+var activePlayer = 0;
 
 var scores = [0, 0];
 
@@ -25,4 +25,20 @@ function shooShid() {
 
   diceDom.style.display = "block";
   diceDom.src = "dice-" + diceNumber + ".png";
+
+  if (diceNumber !== 1) {
+    roundScore += diceNumber;
+    document.getElementById("current-" + activePlayer).textContent = roundScore;
+  } else {
+    document.getElementById("current-" + activePlayer).textContent = 0;
+    activePlayer === 0 ? (activePlayer = 1) : (activePlayer = 0);
+    roundScore = 0;
+    document
+      .querySelector(".player-" + 0 + "-panel")
+      .classList.toggle("active");
+    document
+      .querySelector(".player-" + 1 + "-panel")
+      .classList.toggle("active");
+    diceDom.style.display = "none";
+  }
 }
